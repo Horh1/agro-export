@@ -1,9 +1,7 @@
 import { z } from "zod";
 
 export const inquirySchema = z.object({
-  applicantType: z.enum(["individual", "company"], {
-    required_error: "Выберите тип заявителя",
-  }),
+  applicantType: z.enum(["individual", "company"]),
   companyName: z.string().optional(),
   contactPerson: z
     .string()
@@ -19,8 +17,6 @@ export const inquirySchema = z.object({
     .min(1, "Выберите хотя бы одну позицию"),
   volume: z.string().optional(),
   message: z.string().max(2000, "Максимум 2000 символов").optional(),
-  // reCAPTCHA token — добавим позже
-  // recaptchaToken: z.string().min(1, "Проверка не пройдена"),
 });
 
 export type InquiryInput = z.infer<typeof inquirySchema>;
