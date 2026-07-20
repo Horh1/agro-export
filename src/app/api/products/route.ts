@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const products = await prisma.product.findMany({
@@ -12,7 +14,7 @@ export async function GET() {
   } catch (error) {
     console.error("GET /api/products error:", String(error));
     return NextResponse.json(
-      { error: "Ошибка при получении продуктов", details: String(error) },
+      { error: "Ошибка при получении продуктов" },
       { status: 500 }
     );
   }
