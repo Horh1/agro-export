@@ -1,0 +1,43 @@
+{
+  "scripts": {
+"postinstall": "prisma generate"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:migrate": "prisma migrate dev --name init",
+    "db:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.3",
+    "@types/react": "19.2.17",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.19",
+    "tsx": "^4.22.4",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@prisma/client": "^5.22.0",
+    "@uploadthing/react": "^7.3.3",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.25.0",
+    "next": "^14.2.35",
+    "next-auth": "^4.24.14",
+    "prisma": "^5.22.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.78.0",
+    "react-hot-toast": "^2.6.0",
+    "resend": "^6.16.0",
+    "uploadthing": "^7.7.4",
+    "zod": "^4.4.3"
+  }
+}
