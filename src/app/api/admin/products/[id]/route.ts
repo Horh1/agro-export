@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const ADMIN_KEY = "agro-admin-2026";
 
 function checkAuth(request: Request) {
