@@ -17,7 +17,6 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  // Скрываем Header на страницах админки
   if (pathname.startsWith("/admin")) return null;
 
   useEffect(() => {
@@ -26,7 +25,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ... весь остальной код компонента без изменений
   const handleNavClick = () => setIsMobileOpen(false);
 
   return (
@@ -39,24 +37,24 @@ export default function Header() {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Логотип */}
-          <a
-  href="#hero"
-  className={`flex items-center gap-2 font-display font-bold text-xl lg:text-2xl transition-colors duration-300 ${
-    isScrolled ? "text-green-800" : "text-white"
-  }`}
->
-            <span className="text-2xl lg:text-3xl">🌾</span>
-            <span>Агро-Экспорт</span>
+          <a href="#hero" className="flex items-center gap-2">
+            <img
+              src="/logo.png"
+              alt="Агро-Экспорт"
+              className="h-8 lg:h-10 w-auto"
+            />
           </a>
 
-          {/* Десктоп-навигация */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-700 rounded-lg hover:bg-green-50 transition-colors"
+                className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  isScrolled
+                    ? "text-gray-700 hover:text-green-700 hover:bg-green-50"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                }`}
               >
                 {link.label}
               </a>
@@ -69,40 +67,24 @@ export default function Header() {
             </a>
           </nav>
 
-          {/* Мобильная кнопка */}
           <button
-  onClick={() => setIsMobileOpen(!isMobileOpen)}
-  className={`lg:hidden p-2 transition-colors ${
-    isScrolled ? "text-gray-700 hover:text-green-700" : "text-white hover:text-green-300"
-  }`}
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            className={`lg:hidden p-2 transition-colors ${
+              isScrolled ? "text-gray-700 hover:text-green-700" : "text-white hover:text-green-300"
+            }`}
+            aria-label="Меню"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Мобильное меню */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
