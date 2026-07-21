@@ -36,12 +36,12 @@ export default function Header() {
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <a href="#hero" className="flex items-center gap-2">
+        <div className="flex items-center justify-between py-3 lg:py-4">
+          <a href="#hero" className="flex items-center">
             <img
-              src="/logo.png"
+              src="/logo.png?v=3"
               alt="Агро-Экспорт"
-              className="h-10 lg:h-12 w-auto"
+              className="h-24 lg:h-28 w-auto"
             />
           </a>
 
