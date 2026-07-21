@@ -39,8 +39,8 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Контакты</h4>
             <div className="space-y-2 text-sm text-white/60">
-              <p><a href="tel:+78000000000" className="hover:text-white transition-colors">8 (800) 000-00-00</a></p>
-              <p><a href="mailto:info@emelev-farmer.ru" className="hover:text-white transition-colors">info@emelev-farmer.ru</a></p>
+              <p><a href="tel:+79184677402" className="hover:text-white transition-colors">+7 (918) 467-74-02</a></p>
+              <p><a href="mailto:emeleval@mail.ru" className="hover:text-white transition-colors">emeleval@mail.ru</a></p>
               <p>Россия</p>
             </div>
           </div>
