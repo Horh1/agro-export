@@ -1,10 +1,16 @@
 "use client";
 
 const certificates = [
-  { name: "Сертификат ГОСТ Р", file: "#" },
-  { name: "Фитосанитарный сертификат", file: "#" },
-  { name: "Декларация о соответствии", file: "#" },
-  { name: "Протокол испытаний", file: "#" },
+  {
+    name: "Декларации о соответствии",
+    url: "https://drive.google.com/drive/folders/1eib6-PmPqOI6HNoz0UTqDtPHpwgN0vPC?usp=drive_link",
+    icon: "📜",
+  },
+  {
+    name: "Протоколы испытаний",
+    url: "https://drive.google.com/drive/folders/16mXpNOTAPNFOL9jIGi-29RmrbPxE5NQ_?usp=drive_link",
+    icon: "🔬",
+  },
 ];
 
 export default function CertificateLinks() {
@@ -13,26 +19,16 @@ export default function CertificateLinks() {
       {certificates.map((cert) => (
         <a
           key={cert.name}
-          href={cert.file}
+          href={cert.url}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm group"
-          onClick={(e) => {
-            if (cert.file === "#") e.preventDefault();
-          }}
         >
-          <svg
-            className="w-4 h-4 text-green-400 flex-shrink-0 group-hover:text-green-300 transition-colors"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
+          <span className="text-base">{cert.icon}</span>
+          <span>{cert.name}</span>
+          <svg className="w-4 h-4 ml-auto opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
-          {cert.name}
         </a>
       ))}
     </div>
