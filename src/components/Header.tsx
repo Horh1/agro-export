@@ -41,7 +41,7 @@ export default function Header() {
             <img
               src="/logo.png"
               alt="Агро-Экспорт"
-              className="h-8 lg:h-10 w-auto"
+              className="h-10 lg:h-12 w-auto"
             />
           </a>
 

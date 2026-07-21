@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <div>
             <a href="#hero" className="flex items-center gap-2 mb-3">
-              <img src="/logo.png" alt="Агро-Экспорт" className="h-8 w-auto brightness-0 invert" />
+              <img src="/logo.png" alt="Агро-Экспорт" className="h-10 w-auto brightness-0 invert" />
             </a>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               Крупное сельхозпредприятие. Прямые поставки овощей и зерновых культур оптом по всей России.
