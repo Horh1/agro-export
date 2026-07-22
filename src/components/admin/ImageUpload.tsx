@@ -19,7 +19,7 @@ export default function ImageUpload({ images, onChange }: Props) {
       const formData = new FormData();
       formData.append("image", file);
       try {
-        const res = await fetch("https://api.imgbb.com/1/upload?key=98e7a0b0c70e4b8c6e9d5f6a7b8c9d0e", {
+        const res = await fetch("https://api.imgbb.com/1/upload?key=9137044850768a49adf577dfec06ba96", {
           method: "POST",
           body: formData,
         });
