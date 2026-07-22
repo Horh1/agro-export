@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const ADMIN_EMAIL = "dota2204@bk.ru";
+const ADMIN_EMAIL = "emeleval@mail.ru";
 const ADMIN_PASSWORD = "Agro2026!";
 
 const handler = NextAuth({
