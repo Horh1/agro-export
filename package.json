@@ -17,7 +17,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
     "@prisma/client": "^5.22.0",
-    "@uploadthing/react": "^7.3.3",
+    "@uploadthing/react": "^6.8.0",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.25.0",
     "next": "^14.2.35",
@@ -28,7 +28,7 @@
     "react-hook-form": "^7.78.0",
     "react-hot-toast": "^2.6.0",
     "resend": "^6.16.0",
-    "uploadthing": "^7.7.4",
+    "uploadthing": "^6.13.3",
     "zod": "^4.4.3"
   },
   "devDependencies": {
