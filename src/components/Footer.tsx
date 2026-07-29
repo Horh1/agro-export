@@ -1,54 +1,43 @@
 "use client";
-
-import { usePathname } from "next/navigation";
-import CertificateLinks from "@/components/CertificateLinks";
-
+import { Sprout, Mail, Phone, MapPin } from "lucide-react";
 export default function Footer() {
-  const pathname = usePathname();
-  const currentYear = new Date().getFullYear();
-
-  if (pathname.startsWith("/admin")) return null;
-
   return (
-    <footer className="bg-green-950 text-white">
-      <div className="container-custom py-12">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+    <footer className="bg-forest-950 text-white/50 py-16 border-t border-white/5">
+      <div className="container-custom">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <a href="#hero" className="flex items-center gap-2 mb-3">
-              <img src="/logo.png?v=3" alt="СПСК Корсунский" className="h-12 w-auto brightness-0 invert" />
-            </a>
-            <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              СПСК &quot;КОРСУНСКИЙ&quot;. Прямые поставки овощей и зерновых культур оптом.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Навигация</h4>
-            <nav className="flex flex-col gap-2">
-              {[{ href: "#about", label: "О компании" },{ href: "#products", label: "Продукция" },{ href: "#partners", label: "Партнёрам" },{ href: "#contact", label: "Контакты" }].map((link) => (
-                <a key={link.href} href={link.href} className="text-white/50 hover:text-white transition-colors text-sm">{link.label}</a>
-              ))}
-            </nav>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4 flex items-center gap-2"><span>📋</span> Сертификаты</h4>
-            <CertificateLinks />
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Контакты</h4>
-            <div className="space-y-2 text-sm text-white/60">
-              <p><a href="tel:+79184677402" className="hover:text-white transition-colors">+7 (918) 467-74-02</a></p>
-              <p><a href="mailto:emeleval@mail.ru" className="hover:text-white transition-colors">emeleval@mail.ru</a></p>
-              <p>Россия</p>
+            <div className="flex items-center gap-2 text-white font-bold text-lg mb-4">
+              <Sprout className="w-7 h-7 text-gold" />
+              <span className="font-display">АгроЭкспорт</span>
             </div>
+            <p className="text-sm leading-relaxed">Экспорт сельхозпродукции из России. Качество, проверенное временем и международными стандартами.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-4">Навигация</h4>
+            <ul className="space-y-3 text-sm">
+              <li><a href="#about" className="hover:text-gold transition-colors">О компании</a></li>
+              <li><a href="#products" className="hover:text-gold transition-colors">Продукция</a></li>
+              <li><a href="#partners" className="hover:text-gold transition-colors">Партнёрам</a></li>
+              <li><a href="#contact" className="hover:text-gold transition-colors">Контакты</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-4">Контакты</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-gold" /><a href="tel:+79184677402" className="hover:text-white transition-colors">+7 (918) 467-74-02</a></li>
+              <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-gold" /><a href="mailto:emeleval@mail.ru" className="hover:text-white transition-colors">emeleval@mail.ru</a></li>
+              <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-gold mt-0.5" /><span>Ростовская обл., х. Ленинаван</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-semibold mb-4">Режим работы</h4>
+            <p className="text-sm">Пн-Пт: 9:00 — 18:00</p>
+            <p className="text-sm">Сб: 9:00 — 14:00</p>
+            <p className="text-sm mt-3 text-gold">Приём заявок круглосуточно</p>
           </div>
         </div>
-
-        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-xs">© {currentYear} СПСК &quot;КОРСУНСКИЙ&quot;. Все права защищены.</p>
-          <p className="text-white/30 text-xs">Разработано с заботой о качестве</p>
+        <div className="pt-8 border-t border-white/5 text-center text-xs">
+          © {new Date().getFullYear()} ООО «АгроЭкспорт». Все права защищены.
         </div>
       </div>
     </footer>

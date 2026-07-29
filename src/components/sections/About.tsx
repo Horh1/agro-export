@@ -1,50 +1,56 @@
 "use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
+import { Leaf, Shield, Truck, Award } from "lucide-react";
+import AnimatedCounter from "../ui/AnimatedCounter";
 const features = [
-  { icon: "🌱", title: "Собственные поля", desc: "Более 1000 гектаров плодородных земель в экологически чистом регионе. Контроль качества на каждом этапе." },
-  { icon: "🏭", title: "Современное хранение", desc: "Овощехранилища с климат-контролем и зерновые элеваторы. Продукция доступна круглый год." },
-  { icon: "🚛", title: "Логистика", desc: "Собственный автопарк для доставки по Краснодарскому краю. Работаем без задержек." },
-  { icon: "📋", title: "Сертификаты", desc: "Вся продукция сертифицирована. Соответствие ГОСТ и международным стандартам качества." },
+  { icon: Leaf, title: "Экологичное производство", desc: "Продукция выращивается на полях с 100% контролем качества почв и воды. Без ГМО и вредных химикатов." },
+  { icon: Shield, title: "Международные стандарты", desc: "Соответствие ISO, HACCP и ГОСТ. Полный пакет сертификатов для экспорта в любую страну мира." },
+  { icon: Truck, title: "Логистика под ключ", desc: "От склада до порта назначения. Контроль температурного режима на всех этапах транспортировки." },
+  { icon: Award, title: "Гарантия качества", desc: "Каждая партия проходит лабораторный контроль. Возврат и замена при несоответствии спецификации." },
 ];
-
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="about" className="section-padding bg-white">
+    <section id="about" className="section-padding bg-cream overflow-hidden">
       <div className="container-custom" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
-            <span className="text-green-700 font-semibold text-sm tracking-wider uppercase">О компании</span>
-            <h2 className="heading-lg text-gray-900 mt-3 mb-6">
-              Корсунский кооператив — <span className="text-green-700">надёжный поставщик</span> овощей и зерновых
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Наше предприятие — это современный агропромышленный комплекс полного цикла. От подготовки почвы до доставки продукции клиенту — мы контролируем каждый этап.
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              Работаем напрямую, без посредников. Это позволяет нам предлагать конкурентные цены при стабильно высоком качестве. Гибкие условия сотрудничества для оптовых покупателей любого масштаба.
-            </p>
-            <a href="#contact" className="inline-flex items-center gap-2 text-green-700 font-semibold hover:text-green-800 transition-colors group">
-              Обсудить сотрудничество
-              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </a>
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <motion.div initial={{ opacity: 0, x: -40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px w-16 bg-gold" />
+              <span className="text-forest-700 font-semibold tracking-widest uppercase text-sm">О компании</span>
+            </div>
+            <h2 className="heading-lg text-forest-900 mb-8">Надёжный партнёр в <span className="italic text-forest-700">агроэкспорте</span></h2>
+            <p className="text-gray-600 leading-relaxed mb-6 text-lg">Мы специализируемся на экспорте премиальной сельхозпродукции из России. Наша миссия — доставить свежие овощи и качественное зерно на столы мира, сохранив все полезные свойства и вкусовые качества.</p>
+            <p className="text-gray-500 leading-relaxed mb-10">Работаем напрямую с фермерскими хозяйствами, контролируем каждый этап: от посева до отгрузки. Гарантируем соблюдение сроков и индивидуальный подход.</p>
+            <div className="grid grid-cols-3 gap-6 border-t border-gray-200 pt-8">
+              <div><div className="text-3xl font-bold text-forest-900 font-display"><AnimatedCounter target={10} suffix="+" /></div><div className="text-sm text-gray-500 mt-1">лет опыта</div></div>
+              <div><div className="text-3xl font-bold text-forest-900 font-display"><AnimatedCounter target={500} suffix="+" /></div><div className="text-sm text-gray-500 mt-1">клиентов</div></div>
+              <div><div className="text-3xl font-bold text-forest-900 font-display"><AnimatedCounter target={99} suffix="%" /></div><div className="text-sm text-gray-500 mt-1">в срок</div></div>
+            </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid sm:grid-cols-2 gap-4">
-            {features.map((feature) => (
-              <div key={feature.title} className="p-6 rounded-2xl bg-gray-50 hover:bg-green-50 transition-colors group border border-gray-100 hover:border-green-200">
-                <span className="text-3xl mb-3 block">{feature.icon}</span>
-                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-green-800 transition-colors">{feature.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-forest-900/10">
+              <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80" alt="Agriculture" className="w-full h-[500px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-900/40 to-transparent" />
+            </div>
+            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center"><Award className="w-6 h-6 text-gold-dark" /></div>
+                <div><div className="font-bold text-forest-900">ISO 22000</div><div className="text-xs text-gray-500">Сертифицировано</div></div>
               </div>
-            ))}
+            </div>
           </motion.div>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-24">
+          {features.map((feature, i) => (
+            <motion.div key={feature.title} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }} className="p-6 rounded-2xl bg-white border border-gray-100 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-4 group-hover:bg-forest-900 transition-colors"><feature.icon className="w-6 h-6 text-forest-700 group-hover:text-gold transition-colors" /></div>
+              <h3 className="font-semibold text-forest-900 mb-2">{feature.title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
