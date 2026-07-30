@@ -36,7 +36,7 @@ export default function LoginPage() {
       <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 w-full max-w-sm">
         <div className="text-center mb-6">
           <span className="text-3xl">🌾</span>
-          <h1 className="text-xl font-bold text-gray-900 mt-2">Агро-Экспорт</h1>
+          <h1 className="text-xl font-bold text-gray-900 mt-2">СПСК Корсунский</h1>
           <p className="text-sm text-gray-400">Вход в админ-панель</p>
         </div>
 

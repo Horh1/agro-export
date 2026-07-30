@@ -6,10 +6,10 @@ import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ООО «АгроЭкспорт» | Экспорт сельхозпродукции",
+  title: "СПСК «Корсунский» | Экспорт сельхозпродукции",
   description: "Премиальные овощи и зерновые культуры. Сертифицированное качество, логистика под ключ.",
   keywords: ["экспорт", "агропродукция", "овощи", "зерно", "поставки"],
-  openGraph: { type: "website", locale: "ru_RU", siteName: "ООО «АгроЭкспорт»" },
+  openGraph: { type: "website", locale: "ru_RU", siteName: "СПСК «Корсунский»" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

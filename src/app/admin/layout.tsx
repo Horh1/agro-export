@@ -15,7 +15,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-gray-50">
       <header className="bg-green-900 text-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <span className="font-bold">🌾 Агро-Экспорт — Админ-панель</span>
+          <span className="font-bold">🌾 СПСК Корсунский — Админ-панель</span>
           <nav className="flex gap-4 text-sm items-center">
             <a href="/admin" className="hover:text-green-300 transition-colors">Товары</a>
             <a href="/admin/inquiries" className="hover:text-green-300 transition-colors">Заявки</a>

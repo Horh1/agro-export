@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 text-white font-bold text-lg mb-4">
               <Sprout className="w-7 h-7 text-gold" />
-              <span className="font-display">АгроЭкспорт</span>
+              <span className="font-display">СПСК Корсунский</span>
             </div>
             <p className="text-sm leading-relaxed">Экспорт сельхозпродукции из России. Качество, проверенное временем и международными стандартами.</p>
           </div>
@@ -26,7 +26,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-gold" /><a href="tel:+79184677402" className="hover:text-white transition-colors">+7 (918) 467-74-02</a></li>
               <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-gold" /><a href="mailto:emeleval@mail.ru" className="hover:text-white transition-colors">emeleval@mail.ru</a></li>
-              <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-gold mt-0.5" /><span>Ростовская обл., х. Ленинаван</span></li>
+              <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-gold mt-0.5" /><span>ст. Старокорсунская, ул. им. Ленина, д. 56</span></li>
             </ul>
           </div>
           <div>
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-8 border-t border-white/5 text-center text-xs">
-          © {new Date().getFullYear()} ООО «АгроЭкспорт». Все права защищены.
+          © {new Date().getFullYear()} ООО «СПСК Корсунский». Все права защищены.
         </div>
       </div>
     </footer>

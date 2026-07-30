@@ -1,57 +1,114 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+
 import { useRef } from "react";
-import { Leaf, Shield, Truck, Award } from "lucide-react";
-import AnimatedCounter from "../ui/AnimatedCounter";
+import { motion, useInView } from "framer-motion";
+import { Sprout, Warehouse, Truck, Shield, Leaf, Award } from "lucide-react";
+
 const features = [
-  { icon: Leaf, title: "Экологичное производство", desc: "Продукция выращивается на полях с 100% контролем качества почв и воды. Без ГМО и вредных химикатов." },
-  { icon: Shield, title: "Международные стандарты", desc: "Соответствие ISO, HACCP и ГОСТ. Полный пакет сертификатов для экспорта в любую страну мира." },
-  { icon: Truck, title: "Логистика под ключ", desc: "От склада до порта назначения. Контроль температурного режима на всех этапах транспортировки." },
-  { icon: Award, title: "Гарантия качества", desc: "Каждая партия проходит лабораторный контроль. Возврат и замена при несоответствии спецификации." },
+  { icon: Sprout, title: "1 000+ га", desc: "Собственных полей в Краснодарском крае. Контроль на каждом этапе.", color: "from-green-600 to-emerald-400" },
+  { icon: Warehouse, title: "Хранение", desc: "Овощехранилища с климат-контролем. Продукция круглый год.", color: "from-amber-600 to-yellow-400" },
+  { icon: Truck, title: "Доставка", desc: "Собственный автопарк. Доставка по всему краю без задержек.", color: "from-blue-600 to-cyan-400" },
+  { icon: Shield, title: "ГОСТ", desc: "Сертифицированная продукция. Лабораторный контроль.", color: "from-purple-600 to-pink-400" },
 ];
+
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section id="about" className="section-padding bg-cream overflow-hidden">
-      <div className="container-custom" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <motion.div initial={{ opacity: 0, x: -40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8 }}>
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-px w-16 bg-gold" />
-              <span className="text-forest-700 font-semibold tracking-widest uppercase text-sm">О компании</span>
-            </div>
-            <h2 className="heading-lg text-forest-900 mb-8">Надёжный партнёр в <span className="italic text-forest-700">агроэкспорте</span></h2>
-            <p className="text-gray-600 leading-relaxed mb-6 text-lg">Мы специализируемся на экспорте премиальной сельхозпродукции из России. Наша миссия — доставить свежие овощи и качественное зерно на столы мира, сохранив все полезные свойства и вкусовые качества.</p>
-            <p className="text-gray-500 leading-relaxed mb-10">Работаем напрямую с фермерскими хозяйствами, контролируем каждый этап: от посева до отгрузки. Гарантируем соблюдение сроков и индивидуальный подход.</p>
-            <div className="grid grid-cols-3 gap-6 border-t border-gray-200 pt-8">
-              <div><div className="text-3xl font-bold text-forest-900 font-display"><AnimatedCounter target={10} suffix="+" /></div><div className="text-sm text-gray-500 mt-1">лет опыта</div></div>
-              <div><div className="text-3xl font-bold text-forest-900 font-display"><AnimatedCounter target={500} suffix="+" /></div><div className="text-sm text-gray-500 mt-1">клиентов</div></div>
-              <div><div className="text-3xl font-bold text-forest-900 font-display"><AnimatedCounter target={99} suffix="%" /></div><div className="text-sm text-gray-500 mt-1">в срок</div></div>
+    <section id="about" className="section-padding bg-white relative overflow-hidden" ref={ref}>
+      {/* Фоновые элементы */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest-50/50 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50/50 rounded-full blur-[100px] -z-10" />
+
+      <div className="container-custom">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          {/* Текст */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest-50 text-forest-700 text-sm font-semibold mb-6">
+              <Leaf className="w-4 h-4" />
+              О компании
+            </span>
+            <h2 className="heading-lg text-gray-900 mb-6">
+              Корсунский кооператив —{" "}
+              <span className="text-gradient">надёжный поставщик</span>
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-6 text-lg">
+              Наше предприятие — это современный агропромышленный комплекс полного цикла. От подготовки почвы до доставки — мы контролируем каждый этап.
+            </p>
+            <p className="text-gray-500 leading-relaxed mb-8">
+              Работаем напрямую, без посредников. Конкурентные цены, стабильное качество, гибкие условия для оптовых покупателей.
+            </p>
+
+            <div className="flex flex-wrap gap-6">
+              {[
+                { value: "20+", label: "лет на рынке" },
+                { value: "100+", label: "партнёров" },
+                { value: "50 000+", label: "тонн в год" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-3xl font-bold text-forest-700">{stat.value}</div>
+                  <div className="text-gray-400 text-sm mt-1">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-forest-900/10">
-              <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80" alt="Agriculture" className="w-full h-[500px] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-900/40 to-transparent" />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center"><Award className="w-6 h-6 text-gold-dark" /></div>
-                <div><div className="font-bold text-forest-900">ISO 22000</div><div className="text-xs text-gray-500">Сертифицировано</div></div>
-              </div>
-            </div>
-          </motion.div>
+
+          {/* 3D-карточки */}
+          <div className="grid grid-cols-2 gap-4">
+            {features.map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 40, rotateY: 15 }}
+                animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.2 + i * 0.15, ease: "easeOut" }}
+                whileHover={{ scale: 1.05, rotateY: -5, z: 20 }}
+                className="group relative p-6 rounded-2xl bg-white border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+              >
+                {/* Градиентная полоска сверху */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500`}>
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+
+                {/* Свечение при наведении */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-forest-50/0 group-hover:to-forest-50/30 transition-all duration-500 rounded-2xl pointer-events-none" />
+              </motion.div>
+            ))}
+          </div>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-24">
-          {features.map((feature, i) => (
-            <motion.div key={feature.title} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }} className="p-6 rounded-2xl bg-white border border-gray-100 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-4 group-hover:bg-forest-900 transition-colors"><feature.icon className="w-6 h-6 text-forest-700 group-hover:text-gold transition-colors" /></div>
-              <h3 className="font-semibold text-forest-900 mb-2">{feature.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+
+        {/* Нижняя плашка */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="bg-gradient-to-r from-forest-900 to-forest-800 rounded-3xl p-10 text-center text-white relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-40 h-40 bg-gold/20 rounded-full blur-[60px]" />
+          <div className="absolute bottom-0 left-0 w-60 h-60 bg-forest-400/10 rounded-full blur-[80px]" />
+
+          <div className="relative z-10">
+            <Award className="w-12 h-12 mx-auto mb-4 text-gold" />
+            <h3 className="text-2xl font-bold mb-4">Готовы к сотрудничеству?</h3>
+            <p className="text-white/60 mb-8 max-w-md mx-auto">
+              Обсудим объёмы, цены и условия поставки. Индивидуальный подход к каждому партнёру.
+            </p>
+            <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-white text-forest-950 font-bold rounded-xl transition-all hover:scale-105 hover:shadow-2xl hover:shadow-gold/30">
+              Оставить заявку
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

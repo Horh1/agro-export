@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className={`flex items-center gap-2 font-bold text-xl tracking-tight transition-colors ${scrolled ? 'text-forest-900' : 'text-white'}`}>
             <Sprout className={`w-8 h-8 ${scrolled ? 'text-forest-700' : 'text-gold'}`} />
-            <span className="font-display">АгроЭкспорт</span>
+            <span className="font-display">СПСК Корсунский</span>
           </Link>
           <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map(link => (
