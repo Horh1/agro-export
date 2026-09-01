@@ -44,3 +44,27 @@ model Inquiry {
 
   @@map("inquiries")
 }
+
+model SectionInfo {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  images      String[] @default([])
+  icon        String   @default("🌱")
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  link        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("section_info")
+}
+
+model SiteContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("site_content")
+}

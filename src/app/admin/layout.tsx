@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Не показываем шапку на странице логина
   if (pathname === "/admin/login") {
     return <>{children}</>;
   }
@@ -18,6 +17,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <span className="font-bold">🌾 СПСК Корсунский — Админ-панель</span>
           <nav className="flex gap-4 text-sm items-center">
             <a href="/admin" className="hover:text-green-300 transition-colors">Товары</a>
+            <a href="/admin/sections" className="hover:text-green-300 transition-colors">Секции</a>
+            <a href="/admin/content" className="hover:text-green-300 transition-colors">Тексты</a>
             <a href="/admin/inquiries" className="hover:text-green-300 transition-colors">Заявки</a>
             <a href="/" className="hover:text-green-300 transition-colors" target="_blank">На сайт ↗</a>
             <button

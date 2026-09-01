@@ -3,89 +3,84 @@ import { PrismaClient, Category } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  // Очищаем таблицы в правильном порядке
+  // Очищаем
   await prisma.inquiry.deleteMany();
   await prisma.product.deleteMany();
+  await prisma.sectionInfo.deleteMany();
 
+  // Продукты
   const products = [
     {
       name: "Картофель ранний «Ред Скарлет»",
       category: Category.VEGETABLES,
-      description:
-        "Высокоурожайный сорт голландской селекции. Клубни красные, мякоть жёлтая. Идеален для мойки и фасовки. Вегетационный период 70–80 дней.",
+      description: "Высокоурожайный сорт голландской селекции.",
       price: "от 18 ₽/кг",
-      imageUrl: null,
-    },
-    {
-      name: "Морковь столовая «Нантская 4»",
-      category: Category.VEGETABLES,
-      description:
-        "Классический среднеспелый сорт. Корнеплоды ровные, цилиндрические, длиной 15–17 см. Высокое содержание каротина. Отличная лёжкость.",
-      price: "от 22 ₽/кг",
-      imageUrl: null,
+      images: ["https://i.ibb.co/KpKnrxTN/kartofel-min-min.jpg"],
     },
     {
       name: "Свёкла столовая «Бордо 237»",
       category: Category.VEGETABLES,
-      description:
-        "Среднеранний сорт. Мякоть тёмно-бордовая, без колец. Масса корнеплода 250–500 г. Лёжкость до 8 месяцев.",
+      description: "Среднеранний сорт. Мякоть тёмно-бордовая.",
       price: "от 20 ₽/кг",
-      imageUrl: null,
-    },
-    {
-      name: "Капуста белокочанная «Слава 1305»",
-      category: Category.VEGETABLES,
-      description:
-        "Среднеспелый сорт. Кочаны округлые, плотные, массой 3–5 кг. Устойчив к растрескиванию. Подходит для квашения и свежего потребления.",
-      price: "от 15 ₽/кг",
-      imageUrl: null,
-    },
-    {
-      name: "Лук репчатый «Штутгартер Ризен»",
-      category: Category.VEGETABLES,
-      description:
-        "Немецкий раннеспелый сорт. Луковицы плоско-округлые, 120–150 г. Золотисто-коричневая чешуя. Отличная вызреваемость.",
-      price: "от 25 ₽/кг",
-      imageUrl: null,
-    },
-    {
-      name: "Пшеница озимая «Московская 39»",
-      category: Category.GRAINS,
-      description:
-        "Сорт продовольственной пшеницы. Содержание клейковины 28–32%. Урожайность до 55 ц/га. Зерно 1–2 класса.",
-      price: "от 14 000 ₽/т",
-      imageUrl: null,
-    },
-    {
-      name: "Ячмень яровой «Владимир»",
-      category: Category.GRAINS,
-      description:
-        "Пивоваренный ячмень. Содержание белка 10–11%. Выровненность зерна >92%. Урожайность до 45 ц/га.",
-      price: "от 12 000 ₽/т",
-      imageUrl: null,
-    },
-    {
-      name: "Кукуруза на зерно «Краснодарский 194 МВ»",
-      category: Category.GRAINS,
-      description:
-        "Среднеранний гибрид. Зерно кремнисто-зубовидное. Урожайность до 90 ц/га. Отличная засухоустойчивость.",
-      price: "от 11 000 ₽/т",
-      imageUrl: null,
+      images: ["https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=600"],
     },
   ];
 
-  for (const product of products) {
-    await prisma.product.create({ data: product });
+  for (const p of products) {
+    await prisma.product.create({ data: p });
   }
 
-  console.log(`✅ Засеяно ${products.length} продуктов`);
+  // Секции
+  const sections = [
+    {
+      title: "1 000+ га",
+      description: "Собственных полей в Краснодарском крае. Контроль на каждом этапе.",
+      icon: "🌱",
+      sortOrder: 1,
+      images: [
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800",
+        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800",
+      ],
+    },
+    {
+      title: "Хранение",
+      description: "Овощехранилища с климат-контролем. Продукция круглый год.",
+      icon: "🏭",
+      sortOrder: 2,
+      images: [
+        "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800",
+        "https://images.unsplash.com/photo-1601599963567-89c1ff1b2d8b?w=800",
+      ],
+    },
+    {
+      title: "Доставка",
+      description: "Собственный автопарк. Доставка по всему краю без задержек.",
+      icon: "🚛",
+      sortOrder: 3,
+      images: [
+        "https://images.unsplash.com/photo-1586191582050-b7d3c4b58ed7?w=800",
+        "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800",
+      ],
+    },
+    {
+      title: "ГОСТ",
+      description: "Сертифицированная продукция. Лабораторный контроль.",
+      icon: "📋",
+      sortOrder: 4,
+      images: [
+        "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
+      ],
+    },
+  ];
+
+  for (const s of sections) {
+    await prisma.sectionInfo.create({ data: s });
+  }
+
+  console.log("✅ Сиды загружены");
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());
