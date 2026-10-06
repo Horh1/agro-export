@@ -35,30 +35,29 @@ export default function ContactForm() {
       if (!res.ok) throw new Error();
       toast.success("Заявка отправлена! Свяжемся в ближайшее время.");
       reset();
-    } catch { toast.error("Ошибка отправки. Попробуйте позже."); }
-    finally { setSubmitting(false); }
+    } catch {
+      toast.error("Ошибка отправки. Попробуйте позже.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  const inputClass = (name: string) =>
-    `w-full px-4 py-3.5 rounded-xl border-2 bg-white text-sm transition-all duration-300 outline-none ${
-      focused === name
-        ? "border-forest-500 shadow-lg shadow-forest-500/10"
-        : errors[name as keyof InquiryInput]
-        ? "border-red-300 bg-red-50"
-        : "border-gray-200 hover:border-gray-300"
-    }`;
+  const inputClass = (name: string) => {
+    const base = "w-full px-4 py-3.5 rounded-xl border-2 bg-white text-sm transition-all duration-300 outline-none";
+    if (focused === name) return base + " border-forest-500 shadow-lg shadow-forest-500/10";
+    if (errors[name as keyof InquiryInput]) return base + " border-red-300 bg-red-50";
+    return base + " border-gray-200 hover:border-gray-300";
+  };
 
   return (
     <section id="contact" className="section-padding bg-gradient-to-b from-white to-forest-50/30 relative overflow-hidden" ref={ref}>
       <Toaster position="top-center" />
-      
-      {/* Фоновые круги */}
+
       <div className="absolute top-20 -left-20 w-80 h-80 bg-forest-100/50 rounded-full blur-[100px] -z-10" />
       <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gold/10 rounded-full blur-[120px] -z-10" />
 
       <div className="container-custom">
         <div className="grid lg:grid-cols-5 gap-12">
-          {/* Левая часть — контакты */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -103,7 +102,6 @@ export default function ContactForm() {
             </div>
           </motion.div>
 
-          {/* Правая часть — форма */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -116,7 +114,6 @@ export default function ContactForm() {
               noValidate
             >
               <div className="grid sm:grid-cols-2 gap-5 mb-5">
-                {/* Тип заявителя */}
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Кто вы *</label>
                   <div className="flex gap-3">
@@ -137,7 +134,6 @@ export default function ContactForm() {
                   {errors.applicantType && <p className="text-red-500 text-xs mt-1">{errors.applicantType.message}</p>}
                 </div>
 
-                {/* Компания */}
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Название компании</label>
                   <input
@@ -149,7 +145,6 @@ export default function ContactForm() {
                   />
                 </div>
 
-                {/* Контактное лицо */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Контактное лицо *</label>
                   <input
@@ -162,7 +157,6 @@ export default function ContactForm() {
                   {errors.contactPerson && <p className="text-red-500 text-xs mt-1">{errors.contactPerson.message}</p>}
                 </div>
 
-                {/* Телефон */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Телефон *</label>
                   <input
@@ -176,7 +170,6 @@ export default function ContactForm() {
                   {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
                 </div>
 
-                {/* Email */}
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Email *</label>
                   <input
@@ -190,7 +183,6 @@ export default function ContactForm() {
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                 </div>
 
-                {/* Продукция */}
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Интересующая продукция *</label>
                   <div className="flex flex-wrap gap-2">
@@ -207,7 +199,6 @@ export default function ContactForm() {
                   {errors.interestedIn && <p className="text-red-500 text-xs mt-1">{errors.interestedIn.message}</p>}
                 </div>
 
-                {/* Объём */}
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Примерный объём закупки</label>
                   <input
@@ -219,27 +210,39 @@ export default function ContactForm() {
                   />
                 </div>
 
-                {/* Сообщение */}
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">Дополнительная информация</label>
                   <textarea
                     rows={3}
                     {...register("message")}
                     placeholder="Опишите ваши потребности или задайте вопрос..."
-                    className={`${inputClass("message")} resize-none`}
+                    className={inputClass("message") + " resize-none"}
                     onFocus={() => setFocused("message")}
                     onBlur={() => setFocused(null)}
                   />
                 </div>
               </div>
 
-              {/* Кнопка */}
+              <label className="flex items-start gap-2 text-xs text-gray-500 mb-4 cursor-pointer">
+                <input
+                  type="checkbox"
+                  required
+                  className="mt-0.5 w-4 h-4 accent-forest-700 flex-shrink-0"
+                />
+                <span>
+                  Я даю согласие на обработку персональных данных в соответствии с{" "}
+                  <a href="/privacy" target="_blank" className="text-forest-700 underline hover:text-forest-800">
+                    Политикой конфиденциальности
+                  </a>
+                </span>
+              </label>
+
               <motion.button
                 type="submit"
                 disabled={submitting}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full py-4 bg-gradient-to-r from-forest-700 to-forest-600 hover:from-forest-800 hover:to-forest-700 disabled:from-gray-300 disabled:to-gray-300 text-white font-semibold rounded-xl transition-all shadow-lg shadow-forest-700/20 hover:shadow-xl hover:shadow-forest-700/30 flex items-center justify-center gap-2"
+                className="w-full py-4 bg-gradient-to-r from-forest-700 to-forest-600 hover:from-forest-800 hover:to-forest-700 disabled:from-gray-300 disabled:to-gray-300 text-white font-semibold rounded-xl transition-all shadow-lg shadow-forest-700/20 flex items-center justify-center gap-2"
               >
                 {submitting ? (
                   <>
@@ -256,9 +259,6 @@ export default function ContactForm() {
                   </>
                 )}
               </motion.button>
-              <p className="text-xs text-gray-400 text-center mt-4">
-                Нажимая кнопку, вы соглашаетесь на обработку персональных данных
-              </p>
             </form>
           </motion.div>
         </div>

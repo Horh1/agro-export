@@ -2,7 +2,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const RECIPIENT_EMAIL = "dota2204@bk.ru";
+const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || "emeleval@mail.ru";
 const SENDER_EMAIL = "onboarding@resend.dev";
 
 interface InquiryData {
