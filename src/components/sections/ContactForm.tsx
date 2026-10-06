@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,14 +8,15 @@ import { inquirySchema, type InquiryInput } from "@/lib/validations";
 import toast, { Toaster } from "react-hot-toast";
 import { Phone, Mail, MapPin, Send, User, Building2 } from "lucide-react";
 
-const productOptions = [
-  "Картофель", "Лук", "Морковь", "Свёкла", "Капуста",
-  "Пшеница", "Ячмень", "Кукуруза", "Подсолнечник",
-];
+interface ProductOption {
+  id: string;
+  name: string;
+}
 
 export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
+  const [productOptions, setProductOptions] = useState<ProductOption[]>([]);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -23,6 +24,13 @@ export default function ContactForm() {
     resolver: zodResolver(inquirySchema),
     defaultValues: { interestedIn: [] },
   });
+
+  useEffect(() => {
+    fetch("/api/product-options")
+      .then((r) => r.json())
+      .then((data) => setProductOptions(data.options || []))
+      .catch(() => {});
+  }, []);
 
   const onSubmit = async (data: InquiryInput) => {
     setSubmitting(true);
@@ -186,13 +194,13 @@ export default function ContactForm() {
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Интересующая продукция *</label>
                   <div className="flex flex-wrap gap-2">
-                    {productOptions.map((product) => (
+                    {productOptions.map((option) => (
                       <label
-                        key={product}
+                        key={option.id}
                         className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border-2 border-gray-200 cursor-pointer transition-all has-[:checked]:border-forest-500 has-[:checked]:bg-forest-50 has-[:checked]:text-forest-700 hover:border-gray-300 text-sm"
                       >
-                        <input type="checkbox" value={product} {...register("interestedIn")} className="sr-only" />
-                        {product}
+                        <input type="checkbox" value={option.name} {...register("interestedIn")} className="sr-only" />
+                        {option.name}
                       </label>
                     ))}
                   </div>

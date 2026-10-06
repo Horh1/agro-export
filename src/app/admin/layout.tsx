@@ -19,6 +19,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <a href="/admin" className="hover:text-green-300 transition-colors">Товары</a>
             <a href="/admin/sections" className="hover:text-green-300 transition-colors">Секции</a>
             <a href="/admin/content" className="hover:text-green-300 transition-colors">Тексты</a>
+            <a href="/admin/product-options" className="hover:text-green-300 transition-colors">Продукция в форме</a>
             <a href="/admin/inquiries" className="hover:text-green-300 transition-colors">Заявки</a>
             <a href="/" className="hover:text-green-300 transition-colors" target="_blank">На сайт ↗</a>
             <button
