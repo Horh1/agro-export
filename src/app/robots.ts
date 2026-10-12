@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin/", "/api/"],
     },
-    sitemap: "https://agro-export.ru/sitemap.xml",
+    sitemap: "https://emelev-farmer.ru/sitemap.xml",
   };
 }
