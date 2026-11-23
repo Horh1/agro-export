@@ -17,9 +17,14 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     siteName: "СПСК Корсунский",
     title: "СПСК Корсунский | Овощи и зерновые оптом",
-    description: "Прямые поставки овощей и зерновых от производителя.",
+    description: "Прямые поставки овощей и зерновых оптом от производителя.",
   },
   robots: { index: true, follow: true },
+  
+  // ДОБАВЛЕНА СЕКЦИЯ ВЕРИФИКАЦИИ:
+  verification: {
+    yandex: "d1d399b70f9d76b0",
+  },
 };
 
 export default function RootLayout({
