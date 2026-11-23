@@ -42,4 +42,10 @@ export default function RootLayout({
       </body>
     </html>
   );
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="85" font-family="'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif">
+    🌾
+  </text>
+</svg>
 }
